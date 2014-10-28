@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_entries_theme">
+        <item>Fuubo蓝</item>
+        <item>小米橙</item>
+        <item>魅族蓝</item>
+        <item>豌豆绿</item>
+        <item>文艺灰</item>
+        <item>高端黑</item>
+        <item>豆瓣青</item>
+        <item>闷骚紫</item>
+        <item>Instagram蓝</item>
+        <item>脑残粉</item>
+        <item>蛋碎黄</item>
+    </string-array>
+</resources>

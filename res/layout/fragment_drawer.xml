@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_90"
+        android:paddingLeft="27dp"
+        android:paddingRight="27dp"
+        android:paddingTop="35dp"
+        android:clickable="true" >
+
+        <RelativeLayout
+            android:id="@+id/user_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_bg"
+            android:clickable="true" >
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="@dimen/drawer_avatar_size"
+                android:layout_height="@dimen/drawer_avatar_size"
+                android:src="@drawable/about_ic_suixing"
+                android:scaleType="fitCenter" />
+
+            <FrameLayout
+                android:layout_width="@dimen/drawer_avatar_size"
+                android:layout_height="@dimen/drawer_avatar_size"
+                android:background="@drawable/drawer_avatar_border"
+                android:clickable="false" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_avatar_size"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/avatar"
+                android:layout_marginLeft="20dp" >
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="皇家newfeeling"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="2.0dp" />
+                <TextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fuubo.Meizu"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="14.0sp"
+                    android:layout_marginTop="10.0dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/user_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/user_info"
+            android:layout_marginTop="20.0dp"
+            android:layout_centerHorizontal="true" >
+
+            <LinearLayout
+                android:id="@+id/user_fans"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/selector_bg"
+                android:clickable="true"
+                android:layout_weight="1" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="@string/user_fans_name" />
+                <TextView
+                    android:id="@+id/user_fans_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="10" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/user_watch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/selector_bg"
+                android:clickable="true"
+                android:layout_weight="1" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="@string/user_watch_name" />
+                <TextView
+                    android:id="@+id/user_watch_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="20" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/user_weibo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/selector_bg"
+                android:clickable="true"
+                android:layout_weight="1" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="@string/user_weibo_name" />
+                <TextView
+                    android:id="@+id/user_weibo_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp"
+                    android:text="30" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/user_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:clickable="false" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45.0dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/selector_bg"
+                android:paddingLeft="15.0dp"
+                android:paddingRight="15.0dp"
+                android:clickable="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_menu_0"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+            <View 
+                android:background="@color/fuuboA" 
+                android:layout_width="fill_parent" 
+                android:layout_height="1.0dip" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45.0dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/selector_bg"
+                android:paddingLeft="15.0dp"
+                android:paddingRight="15.0dp"
+                android:clickable="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_menu_1"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+            <View 
+                android:background="@color/fuuboA" 
+                android:layout_width="fill_parent" 
+                android:layout_height="1.0dip" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45.0dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/selector_bg"
+                android:paddingLeft="15.0dp"
+                android:paddingRight="15.0dp"
+                android:clickable="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_menu_2"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+            <View 
+                android:background="@color/fuuboA" 
+                android:layout_width="fill_parent" 
+                android:layout_height="1.0dip" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45.0dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/selector_bg"
+                android:paddingLeft="15.0dp"
+                android:paddingRight="15.0dp"
+                android:clickable="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_menu_3"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+            <View 
+                android:background="@color/fuuboA" 
+                android:layout_width="fill_parent" 
+                android:layout_height="1.0dip" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45.0dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/selector_bg"
+                android:paddingLeft="15.0dp"
+                android:paddingRight="15.0dp"
+                android:clickable="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/user_menu_4"
+                    android:textColor="@color/fuuboD"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+	
+</FrameLayout>

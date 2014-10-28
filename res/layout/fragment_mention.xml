@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.wangzl.common.widget.pulltorefresh.XListView 
+        android:id="@+id/xlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:choiceMode="singleChoice"
+        android:divider="@null" />
+</RelativeLayout>
