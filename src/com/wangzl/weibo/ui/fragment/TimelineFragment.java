@@ -4,24 +4,23 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.wangzl.common.widget.pulltorefresh.XListView;
 import com.wangzl.common.widget.pulltorefresh.XListView.IXListViewListener;
 import com.wangzl.weibo.R;
 import com.wangzl.weibo.bean.SmsInfoBean;
-import com.wangzl.weibo.ui.MainActivity;
 import com.wangzl.weibo.ui.adapter.SmsAdapter;
+import com.wangzl.weibo.util.NotificationUtil;
 
 import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +68,8 @@ public class TimelineFragment extends BaseFragment implements IXListViewListener
 	private class InitDataAsyncTask extends AsyncTask<String, Integer, Boolean> {
 
 		private Context mContext;
+		private Handler handler = new Handler();
+		private int n_id;
 		
 		public InitDataAsyncTask(Context context) {
 			mContext = context;
@@ -106,15 +107,6 @@ public class TimelineFragment extends BaseFragment implements IXListViewListener
 			super.onPostExecute(result);
 			mAdapter = new SmsAdapter(getActivity(), mList);
 			mListView.setAdapter(mAdapter);
-			
-			Notification nt = new Notification();
-			nt.icon = R.drawable.about_ic_suixing;
-			nt.tickerText = "您收到了一条短信息.";
-			nt.when = System.currentTimeMillis();
-			nt.defaults = Notification.DEFAULT_ALL;
-			PendingIntent intent = PendingIntent.getActivity(getActivity(), 0, new Intent(getActivity(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-			nt.setLatestEventInfo(getActivity(), "短信息", "您收到了一条短信息.", intent);
-			notificationManager.notify(0x123, nt);
 		}
 	}
 }

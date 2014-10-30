@@ -3,7 +3,6 @@ package com.wangzl.weibo.ui;
 import com.wangzl.common.widget.viewpagerindicator.UnderlinePageIndicator;
 import com.wangzl.weibo.R;
 import com.wangzl.weibo.ui.base.BaseActivity;
-import com.wangzl.weibo.ui.fragment.CommentFragment;
 import com.wangzl.weibo.ui.fragment.DrawerFragment;
 import com.wangzl.weibo.ui.fragment.MentionFragment;
 import com.wangzl.weibo.ui.fragment.TimelineFragment;
@@ -106,7 +105,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		pageIndicator.setSelectedColor(Color.WHITE);
 		custView.findViewById(R.id.tab_timeline).setOnClickListener(this);
 		custView.findViewById(R.id.tab_mention).setOnClickListener(this);
-		custView.findViewById(R.id.tab_comment).setOnClickListener(this);
 	}
 	
 	private void initLeftDrawer() {
@@ -143,7 +141,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		
 		private TimelineFragment mTimelineFragment = new TimelineFragment();
 		private MentionFragment mMentionFragment = new MentionFragment();
-		private CommentFragment mCommentFragment = new CommentFragment();
 
 		public MyPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -156,8 +153,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				return mTimelineFragment;
 			case 1:
 				return mMentionFragment;
-			case 2:
-				return mCommentFragment;
 			default:
 				break;
 			}
@@ -166,7 +161,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 2;
 		}
 		
 	}
@@ -179,9 +174,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				break;
 			case R.id.tab_mention:
 				mViewPager.setCurrentItem(1, true);
-				break;
-			case R.id.tab_comment:
-				mViewPager.setCurrentItem(2, true);
 				break;
 			case R.id.btn_new:
 				System.out.println("btn_new click!");

@@ -7,8 +7,8 @@
 	<string name="user_watch_name">关注</string>
 	<string name="user_weibo_name">微博</string>
 	
-	<string name="user_menu_0">收藏</string>
-	<string name="user_menu_1">草稿箱</string>
+	<string name="user_menu_0">彩信能力</string>
+	<string name="user_menu_1">视频能力</string>
 	<string name="user_menu_2">搜索</string>
 	<string name="user_menu_3">设置</string>
 	<string name="user_menu_4">退出</string>

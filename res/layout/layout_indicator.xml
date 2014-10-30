@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="140dp"
+    android:layout_width="95dp"
     android:layout_height="match_parent"
     android:paddingRight="5dp" >
     
     <com.wangzl.common.widget.viewpagerindicator.UnderlinePageIndicator 
         android:id="@+id/indicator"
-        android:layout_width="135.0dp"
+        android:layout_width="90.0dp"
         android:layout_height="2.0dp"
         android:layout_alignParentBottom="true"/>
 
@@ -15,7 +15,7 @@
         android:layout_width="45dp"
         android:layout_height="match_parent"
         android:background="@drawable/item_pressed"
-        android:src="@drawable/tab_home"
+        android:src="@drawable/tab_comment"
         android:scaleType="fitCenter"
         android:layout_above="@id/indicator" />
     
@@ -24,19 +24,10 @@
         android:layout_width="45dp"
         android:layout_height="match_parent"
         android:background="@drawable/item_pressed"
-        android:src="@drawable/tab_mention"
+        android:src="@drawable/tab_comment_new"
         android:scaleType="fitCenter"
         android:layout_toRightOf="@id/tab_timeline"
         android:layout_above="@id/indicator" />
     
-    <ImageView
-        android:id="@+id/tab_comment"
-        android:layout_width="45dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/item_pressed"
-        android:src="@drawable/tab_comment"
-        android:scaleType="fitCenter"
-        android:layout_toRightOf="@id/tab_mention"
-        android:layout_above="@id/indicator" />
 
 </RelativeLayout>
