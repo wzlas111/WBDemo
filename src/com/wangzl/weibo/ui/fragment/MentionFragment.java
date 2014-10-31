@@ -69,9 +69,6 @@ public class MentionFragment extends BaseFragment implements IXListViewListener{
 	public void onLoadMore() {
 	}
 	
-	private final Uri CONTENT_URI = Uri.parse("content://mms/inbox"); //查询彩信收件箱
-    private final Uri CONTENT_URI_PART = Uri.parse("content://mms/part"); //彩信附件表
-	
 	private class InitDataAsyncTask extends AsyncTask<String, Integer, Boolean> {
 
 		private Context mContext;
@@ -87,11 +84,11 @@ public class MentionFragment extends BaseFragment implements IXListViewListener{
 			mList = new ArrayList<MmsInfoBean>();
 			try {
 				resolver = mContext.getContentResolver();
-				Cursor cursor = resolver.query(CONTENT_URI, new String[] {"_id", "date", "sub"}, null, null, " date desc ");
+				Cursor cursor = resolver.query(Uri.parse("content://mms/inbox"), new String[] {"_id", "date", "sub"}, null, null, " date desc ");
 				while(cursor.moveToNext()) {
 					MmsInfoBean bean = new MmsInfoBean();
 		            bean.id = cursor.getString(0);  
-		            bean.date = dateFormat.format(new Date(cursor.getLong(1)));  
+		            bean.date = dateFormat.format(new Date(cursor.getLong(1) * 1000));  
 		            String title = cursor.getString(2);
 		            if (title != null && !"".equals(title)) {
 		            	bean.title = new String(title.getBytes("iso-8859-1"),"UTF-8");
@@ -99,7 +96,17 @@ public class MentionFragment extends BaseFragment implements IXListViewListener{
 						bean.title = "无";
 					}
 		            
-		            Cursor subCursor = resolver.query(CONTENT_URI_PART, new String[] {"_id", "mid", "ct", "text"}, "mid='"+bean.id+"'", null, null);
+		            //读取联系人
+		            Uri addrUri = Uri.parse("content://mms/"+bean.id+"/addr");
+		            Cursor addrCursor = resolver.query(addrUri, null, "msg_id="+bean.id, null, null);
+		            if (addrCursor.moveToNext()) {
+						String number = addrCursor.getString(addrCursor.getColumnIndex("address"));
+						bean.telephone = number;
+		            }
+		            addrCursor.close();
+		            
+		            //读取附件
+		            Cursor subCursor = resolver.query(Uri.parse("content://mms/part"), new String[] {"_id", "mid", "ct", "text"}, "mid='"+bean.id+"'", null, null);
 		            while(subCursor.moveToNext()) {
 		            	String _id = subCursor.getString(0);
 		            	String mid = subCursor.getString(1);
@@ -128,12 +135,6 @@ public class MentionFragment extends BaseFragment implements IXListViewListener{
 			mAdapter = new MmsAdapter(getActivity(), mList);
 			mListView.setAdapter(mAdapter);
 			
-//			Notification nt = new Notification();
-//			nt.icon = R.drawable.about_ic_suixing;
-//			nt.tickerText = "您收到了一条彩信息.";
-//			nt.when = System.currentTimeMillis();
-//			nt.defaults = Notification.DEFAULT_ALL;
-//			notificationManager.notify(0x123, nt);
 		}
 		
 		private String getText(String _id) {

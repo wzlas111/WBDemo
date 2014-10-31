@@ -26,7 +26,7 @@
             android:src="@drawable/about_ic_suixing" />
 
         <TextView
-            android:id="@+id/sms_title"
+            android:id="@+id/sms_telephone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/avatar"
@@ -41,8 +41,8 @@
             android:id="@+id/sms_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/sms_title"
-            android:layout_below="@id/sms_title"
+            android:layout_alignLeft="@id/sms_telephone"
+            android:layout_below="@id/sms_telephone"
             android:text="周二"
             android:textColor="@color/fuuboB" />
 
@@ -52,22 +52,46 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:src="@drawable/ic_boy" />
+            android:src="@drawable/image_fav" />
 
         <View
             android:id="@+id/divider"
             android:layout_width="fill_parent"
             android:layout_height="1.0dip"
             android:layout_below="@id/avatar"
-            android:background="@color/fuuboC" />
+            android:layout_marginLeft="5.0dp"
+            android:layout_marginRight="5.0dp"
+            android:background="@color/fuuboB" />
+        
+        <TextView
+            android:id="@+id/sms_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginTop="10.0dp"
+            android:layout_marginLeft="20.0dp"
+            android:layout_marginRight="20.0dp"
+            android:layout_marginBottom="5.0dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="主题"
+            android:textColor="@color/fuuboA" />
+        
+        <View
+            android:id="@+id/sub_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1.0dip"
+            android:layout_below="@id/sms_subtitle"
+            android:background="@color/fuuboC"
+            android:layout_marginLeft="20.0dp"
+            android:layout_marginRight="20.0dp" />
 
         <TextView
             android:id="@+id/sms_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/divider"
+            android:layout_below="@id/sub_divider"
             android:layout_marginTop="10.0dp"
-            android:layout_marginLeft="13.0dp"
+            android:layout_marginLeft="20.0dp"
             android:layout_marginRight="13.0dp"
             android:layout_marginBottom="20.0dp"
             android:lineSpacingMultiplier="1.2"
@@ -79,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/sms_content"
-            android:layout_marginLeft="12.5dp"
+            android:layout_marginLeft="20.0dp"
             android:layout_marginRight="16.0dp"
             android:layout_marginTop="7.0dp"
             android:layout_marginBottom="20.0dp"

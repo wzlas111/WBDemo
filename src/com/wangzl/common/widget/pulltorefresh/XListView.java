@@ -1,8 +1,10 @@
 package com.wangzl.common.widget.pulltorefresh;
 
 import com.wangzl.weibo.R;
+import com.wangzl.weibo.util.WUtil;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -53,38 +55,45 @@ public class XListView extends ListView implements OnScrollListener {
 	private final static int PULL_LOAD_MORE_DELTA = 50; // when pull up >= 50px
 														// at bottom, trigger
 														// load more.
-	private final static float OFFSET_RADIO = 2.2f; // support iOS like pull
-													// feature.
+	private final static float OFFSET_RADIO = 2.2f; // support iOS like pull feature.
 
 	/**
 	 * @param context
 	 */
 	public XListView(Context context) {
 		super(context);
-		initWithContext(context);
+		initWithContext(context, null);
 	}
 
 	public XListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		initWithContext(context);
+		initWithContext(context, attrs);
 	}
 
 	public XListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		initWithContext(context);
+		initWithContext(context, attrs);
 	}
 
-	private void initWithContext(Context context) {
+	private void initWithContext(Context context, AttributeSet attrs) {
 		setHeaderDividersEnabled(false);
 		mScroller = new Scroller(context, new DecelerateInterpolator());
-		// XListView need the scroll event, and it will dispatch the event to
-		// user's listener (as a proxy).
 		super.setOnScrollListener(this);
 
 		// init header view
 		mHeaderView = new XListViewHeader(context);
-		mHeaderViewContent = (RelativeLayout) mHeaderView
-				.findViewById(R.id.xlistview_header_content);
+		mHeaderView.setClickable(true);
+		mHeaderViewContent = (RelativeLayout) mHeaderView.findViewById(R.id.xlistview_header_content);
+		
+		TypedArray localTypedArray = context.obtainStyledAttributes(attrs, R.styleable.XListview);
+	    int i = localTypedArray.getInt(0, -1);
+	    if (i > 0)
+	    {
+	      TextView localTextView = new TextView(context);
+	      localTextView.setHeight(WUtil.convertDimen2Pix(i));
+	      addHeaderView(localTextView);
+	    }
+	    localTypedArray.recycle();
 		addHeaderView(mHeaderView);
 
 		// init footer view

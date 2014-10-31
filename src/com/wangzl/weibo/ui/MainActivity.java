@@ -9,6 +9,10 @@ import com.wangzl.weibo.ui.fragment.TimelineFragment;
 import com.wangzl.weibo.util.WUtil;
 
 import android.app.ActionBar;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -38,6 +42,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	private View mBtnNew;
 	private View mBtnRefresh;
 	
+	private PendingIntent alarmIntent;
+	private AlarmManager alarmManager;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,6 +63,18 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		initViewPager();
 		initActionBar();
 		initLeftDrawer();
+		
+		initAlarm();
+	}
+	
+	private void initAlarm() {
+		Intent intent = new Intent("com.wangzl.action.alarm");
+		alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+		if (alarmManager != null) {
+			alarmManager.cancel(alarmIntent);
+		}
+		alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+		alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60 * 1000, alarmIntent);
 	}
 	
 	private void initViews() {
@@ -95,7 +114,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	private void initActionBar() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowCustomEnabled(true);
-		actionBar.setIcon(R.drawable.ic_actionbar);
+		actionBar.setIcon(R.drawable.ic_bar_3);
 		View custView = getLayoutInflater().inflate(R.layout.layout_indicator, null);
 		custView.setLayoutParams(new ActionBar.LayoutParams(Gravity.RIGHT));
 		actionBar.setCustomView(custView);

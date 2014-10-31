@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.wangzl.weibo"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.wangzl.common.widget.pulltorefresh.XListView 
+    <com.wangzl.common.widget.pulltorefresh.XListView
         android:id="@+id/xlistview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:headerDividersEnabled="false"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
         android:footerDividersEnabled="false"
-        android:choiceMode="singleChoice"
-        android:divider="@null" />
+        android:headerDividersEnabled="false"
+        android:listSelector="@color/transparent"
+        custom:headerMarginTop="0" />
 
 </RelativeLayout>

@@ -44,9 +44,10 @@ public class MmsAdapter extends BaseAdapter {
 		ViewHolder viewHolder = null;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
-			convertView = LayoutInflater.from(mContext).inflate(R.layout.xlistview_item_sms, parent, false);
+			convertView = LayoutInflater.from(mContext).inflate(R.layout.xlistview_item_mms, parent, false);
 			viewHolder.iv_avatar = (ImageView)convertView.findViewById(R.id.avatar);
-			viewHolder.tv_sms_title = (TextView)convertView.findViewById(R.id.sms_title);
+			viewHolder.tv_sms_telephone = (TextView)convertView.findViewById(R.id.sms_telephone);
+			viewHolder.tv_sms_sub_title = (TextView)convertView.findViewById(R.id.sms_subtitle);
 			viewHolder.tv_sms_date = (TextView)convertView.findViewById(R.id.sms_date);
 			viewHolder.tv_sms_content = (TextView)convertView.findViewById(R.id.sms_content);
 			viewHolder.v_layout_thumbnail_pic = convertView.findViewById(R.id.layout_thumbnail_pic);
@@ -57,8 +58,9 @@ public class MmsAdapter extends BaseAdapter {
 		}
 		
 		MmsInfoBean bean = mList.get(position);
-		viewHolder.tv_sms_title.setText(bean.title);
+		viewHolder.tv_sms_telephone.setText(bean.telephone);
 		viewHolder.tv_sms_date.setText(bean.date);
+		viewHolder.tv_sms_sub_title.setText("主题:"+bean.title);
 		if (bean.body != null && !"".equals(bean.body)) {
 			viewHolder.tv_sms_content.setText(bean.body);
 		} else {
@@ -76,7 +78,8 @@ public class MmsAdapter extends BaseAdapter {
 	
 	public class ViewHolder {
 		ImageView iv_avatar;
-		TextView tv_sms_title;
+		TextView tv_sms_telephone;
+		TextView tv_sms_sub_title;
 		TextView tv_sms_date;
 		TextView tv_sms_content;
 		View v_layout_thumbnail_pic;;

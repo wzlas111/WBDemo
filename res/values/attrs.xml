@@ -2,4 +2,8 @@
 <resources>
     <attr name="windowBackground" format="reference|color"></attr>
     
+    <declare-styleable name="XListview">
+        <attr name="headerMarginTop" format="integer" />
+    </declare-styleable>
+    
 </resources>

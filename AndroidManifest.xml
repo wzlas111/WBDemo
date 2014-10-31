@@ -24,7 +24,6 @@
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.BROADCAST_WAP_PUSH" />
     
     <!-- 
     <uses-permission android:name="android.permission.BROADCAST_WAP_PUSH" />
@@ -38,12 +37,22 @@
         android:name="com.wangzl.weibo.AppContext" >
         
         <activity 
-            android:name="com.wangzl.weibo.ui.MainActivity">
+            android:name="com.wangzl.weibo.ui.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        
+        <service 
+            android:name="com.wangzl.weibo.service.TimelineService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="998">
+                <action android:name="com.wangzl.weibo.service.TimelineService"/>
+            </intent-filter>
+        </service>
         
         <receiver 
             android:name=".receiver.TimelineReceiver">
@@ -55,6 +64,14 @@
                 <!-- 
                 	<data android:mimeType="application/vnd.wap.mms-message"/>
                  -->
+            </intent-filter>
+        </receiver>
+        
+        <receiver 
+            android:name=".receiver.AlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wangzl.action.alarm"/>
             </intent-filter>
         </receiver>
     </application>

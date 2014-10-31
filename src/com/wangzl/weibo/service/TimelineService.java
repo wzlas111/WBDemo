@@ -12,7 +12,15 @@ public class TimelineService extends Service {
 	}
 	
 	@Override
+	public void onCreate() {
+		super.onCreate();
+		System.out.println("TimelineService ====> onCreate");
+	}
+	
+	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+		System.out.println("TimelineService ====> onStartCommand");
+		
 		return super.onStartCommand(intent, flags, startId);
 	}
 
